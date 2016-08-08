@@ -147,16 +147,16 @@ ShoppingList.prototype.addItem = function(name) {
     });
     ajax.done(this.getItems.bind(this));
 };
-ShoppingList.prototype.deleteItem = function(id) {
-    var ajax = $.ajax('/items/' + id, {
+ShoppingList.prototype.deleteItem = function(name) {
+    var ajax = $.ajax('/items/ + name', {
         type: 'DELETE',
         dataType: 'json'
     });
     ajax.done(this.getItems.bind(this));
 };
-ShoppingList.prototype.editItem = function(id, name) {
-    var item = {'name': name, 'id': id};
-    var ajax = $.ajax('/items/' + id, {
+ShoppingList.prototype.editItem = function(name) {
+    var item = {'name': name};
+    var ajax = $.ajax('/items/' + name, {
         type: 'PUT',
         data: JSON.stringify(item),
         dataType: 'json',
